@@ -1,6 +1,14 @@
+
+
 # Return a reversed copy of the array
 def reverse(an_array)
-  # write your code here
+	len = an_array.length
+	newArr = Array.new(an_array.length)
+	while len > 0 do
+		newArr[len-1] = an_array[an_array.length - len]
+		len -= 1
+	end
+	return newArr
 end
 
 # Return a map of letters and counts of letters
