@@ -1,6 +1,9 @@
 
 
 # Return a reversed copy of the array
+# 
+# I wrote this then realized there is an inherent .reverse
+# method on Arrays. 
 def reverse(an_array)
 	len = an_array.length
 	newArr = Array.new(an_array.length)
@@ -11,11 +14,27 @@ def reverse(an_array)
 	return newArr
 end
 
+def reverse2(an_array)
+	return an_array.reverse
+end
+
 # Return a map of letters and counts of letters
 # Letters should be lowercase before counting
 # For example, histogram('Hello') returns {'h'=>1,'e'=>1,'l'=>2,'o'=>1}
+#
+# Thankfully for this case, Ruby is pass-by-value
 def histogram(a_string)
-  # write your code here
+	a_string = a_string.downcase 
+	count = Hash.new
+	letters = a_string.length
+	while (letters > 0)
+		if count.has_key?(a_string[letters])
+			count[a_string[letters]] += 1
+		else
+			count[a_string[letters]] = 1
+		end
+		letters -= 1
+	end  
 end
 
 # Sum all the numbers in the array
