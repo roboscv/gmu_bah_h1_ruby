@@ -29,9 +29,9 @@ def histogram(a_string)
 	letters = a_string.length
 	while (letters > 0)
 		if count.has_key?(a_string[letters])
-			count[a_string[letters]] += 1
+			count[a_string[letters-1]] += 1
 		else
-			count[a_string[letters]] = 1
+			count[a_string[letters-1]] = 1
 		end
 		letters -= 1
 	end  
