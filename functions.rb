@@ -24,16 +24,16 @@ end
 #
 # Thankfully for this case, Ruby is pass-by-value
 def histogram(a_string)
-	a_string = a_string.downcase 
+	letterArray = a_string.downcase.split(//) 
 	count = Hash.new
-	letters = a_string.length
-	while (letters > 0)
-		if count.has_key?(a_string[letters])
-			count[a_string[letters-1]] += 1
+	letterCount = a_string.length
+	letterArray.map do |letter|
+		puts letter.class
+		if count.has_key?(letter)
+			count[letter] = 1
 		else
-			count[a_string[letters-1]] = 1
+			count[letter] = 1
 		end
-		letters -= 1
 	end  
 end
 
