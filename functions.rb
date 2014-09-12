@@ -6,9 +6,9 @@
 # method on Arrays. 
 def reverse(an_array)
 	len = an_array.length
-	newArr = Array.new(an_array.length)
+	new_arr = Array.new(an_array.length)
 	while len > 0 do
-		newArr[len-1] = an_array[an_array.length - len]
+		new_arr[len-1] = an_array[an_array.length - len]
 		len -= 1
 	end
 	return newArr
@@ -24,17 +24,16 @@ end
 #
 # Thankfully for this case, Ruby is pass-by-value
 def histogram(a_string)
-	letterArray = a_string.downcase.split(//) 
+	letter_array = a_string.downcase.split('')
 	count = Hash.new
-	letterCount = a_string.length
-	letterArray.map do |letter|
-		puts letter.class
+	letter_array.each do |letter|
 		if count.has_key?(letter)
-			count[letter] = 1
+			count[letter] = count[letter] + 1
 		else
 			count[letter] = 1
 		end
 	end  
+	count
 end
 
 # Sum all the numbers in the array
@@ -57,6 +56,6 @@ def fizzbuzz
 end
 
 # Uncomment each of these to test your functions
-# puts reverse([3,6,'dog']).inspect
-# puts histogram('The Quick brown fox').inspect
+ puts reverse([3,6,'dog']).inspect
+#puts histogram('The Quick brown fox').inspect
 # puts sum_only_numbers [4, 'foo', [ ], 27, :rain, 3.14]
