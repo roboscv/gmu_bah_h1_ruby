@@ -11,7 +11,7 @@ def reverse(an_array)
 		new_arr[len-1] = an_array[an_array.length - len]
 		len -= 1
 	end
-	return newArr
+	new_arr
 end
 
 def reverse2(an_array)
@@ -24,7 +24,7 @@ end
 #
 # Thankfully for this case, Ruby is pass-by-value
 def histogram(a_string)
-	letter_array = a_string.downcase.split('')
+	letter_array = a_string.downcase.split(//)
 	count = Hash.new
 	letter_array.each do |letter|
 		if count.has_key?(letter)
@@ -41,7 +41,15 @@ end
 # Be sure to only sum the numbers
 # (Hint: the is_a? method might be useful here)
 def sum_only_numbers(an_array)
-  # write your code here
+  if an_array.length == 0
+  	return 0
+  end
+  if an_array[0].is_a?(Integer)
+  	an_array[0] + sum_only_numbers(an_array.drop(1))
+  else
+  	sum_only_numbers(an_array.drop(1))
+  end
+
 end
 
 # For i from 1 to 100, return an array.
@@ -52,10 +60,26 @@ end
 # Otherwise, the element is simply the value of i
 # For example [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', ..., 14, 'FizzBuzz', ...]
 def fizzbuzz
-  # write your code here
+	num_arr = Array.new(100) {|index| index+1}
+	arr = Array.new(100) {''}
+	num_arr.each do |i|
+
+	  	if i%3 == 0
+	  		if i%5 == 0
+	  			arr[i-1] = 'FizzBuzz'
+	  		else
+	  			arr[i-1] = 'Fizz'
+	  		end
+	  	elsif i%5 == 0
+	  		arr[i-1] = 'Buzz'
+	  	else
+	  		arr[i-1] = i.to_s
+	  	end
+	  end
+  	arr
 end
 
-# Uncomment each of these to test your functions
- puts reverse([3,6,'dog']).inspect
-#puts histogram('The Quick brown fox').inspect
-# puts sum_only_numbers [4, 'foo', [ ], 27, :rain, 3.14]
+puts reverse([3,6,'dog']).inspect
+puts histogram('The Quick brown fox').inspect
+#puts sum_only_numbers [4, 'foo', [ ], 27, :rain, 3.14]
+puts fizzbuzz
