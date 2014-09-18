@@ -44,7 +44,7 @@ def sum_only_numbers(an_array)
   if an_array.length == 0
   	return 0
   end
-  if an_array[0].is_a?(Integer)
+  if an_array[0].is_a?(Numeric)
   	an_array[0] + sum_only_numbers(an_array.drop(1))
   else
   	sum_only_numbers(an_array.drop(1))
